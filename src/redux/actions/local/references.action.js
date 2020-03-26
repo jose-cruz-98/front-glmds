@@ -19,6 +19,7 @@ const goToHome = (msg) => {
     localStorage.clear();
     window.location.href=`${api.HOST}/iniciar-sesion`;
 }
+
 /// ACTIONS
 const getPatent = (query) => {
     return async (dispatch) => {
