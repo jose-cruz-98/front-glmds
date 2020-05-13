@@ -1,0 +1,18 @@
+----------------------------
+        REFERENCIAS         
+----------------------------
+    -> revalidacion
+        *agregar imagen
+        *cambiar estado de la revalidacion
+    -> maniobra portuarias
+        *cambiar el estado (programada)
+        *agregar archivo 
+    -> pago de pedimento
+        *cambiar estado (pagado o pendiente)
+        *agregar archivo
+    
+
+    1 revalidacion
+    2 pago de pedimento
+    3 manipbra portuaria
+    -agregar documetos en la referencia y no en modulos de pagos.

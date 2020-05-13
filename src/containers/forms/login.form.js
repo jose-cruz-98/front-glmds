@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
-import Input from '../components/input';
-import Button from '../components/button';
+import {Input} from '../components/input';
+import {Button} from '../components/button';
 import {Row} from '../components/layout';
 
 import {validateForm} from '../../utils/validations/validate';
