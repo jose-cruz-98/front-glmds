@@ -140,4 +140,52 @@ export const addImagenMonitoring = (dataForm, functions) => {
     }
 }
 
+export const getEvidence = (query) => {
+    return async (dispatch) => {
+        try{
+            query = objetToQueryRequest(query);
+            let evidences = await AXIOS.get(`${api.GET.GET_EVIDENCES}${query ? query : ""}`);
+                
+            dispatch({
+                type : 'SET_EVIDENCES',
+                payload : {
+                    evidences : evidences.data.evidences
+                }
+            })
+        }catch(err){
+            if(err.response.status === 403){
+                goToHome(err.response.data.msg);
+            }else if(err.response.status === 404){
+                toast(err.response.data.msg, { autoClose: 3500, type : toast.TYPE.WARNING});
+            }
+            console.log("Error in reference redux : ", err.response.status);
+        }
+    }
+}
+
+export const addEvidence = (dataForm, functions) => {
+    return async (dispatch) => {
+        functions.toggleLoader();
+        let toastId = toast("Cargando..", { autoClose: false });
+        try{
+            let evidences = await AXIOS.post(api.POST.ADD_EVIDENCES,dataForm);
+
+            dispatch({
+                type : 'SET_EVIDENCES',
+                payload : {
+                    evidences : evidences.data.evidences
+                }
+            })
+            updateToast(toastId, evidences.data.msg, toast.TYPE.SUCCESS);
+            functions.toggleLoader();
+            functions.showModal(false);
+        }catch(err){
+            if(err.response.status === 403){
+                goToHome(err.response.data.msg);
+            }
+            console.log("Error in reference redux : ", err.response.status);
+        }
+    }
+}
+
 

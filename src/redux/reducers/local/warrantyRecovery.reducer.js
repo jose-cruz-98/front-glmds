@@ -1,6 +1,7 @@
 const INITIAL_STATE = {
     events : [],
-    carriers : []
+    carriers : [],
+    evidences : []
 }
 
 export const WarrantyRecovery = (state = INITIAL_STATE, action) => {
@@ -15,6 +16,11 @@ export const WarrantyRecovery = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 carriers : payload.carriers
+            }
+        case 'SET_EVIDENCES':
+            return {
+                ...state,
+                evidences : payload.evidences
             }
         default:
             return state;

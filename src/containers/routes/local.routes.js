@@ -20,6 +20,7 @@ import AddImportReferences from '../views/local/import/references/addOrEditImpor
 import ImportDocuments from '../views/local/import/documets/importDocuments.view';
 import ImportPayments from '../views/local/import/payments/importPayments.view';
 import WarrantyRecovery from '../views/local/import/inspectionPointAndEmptiness/warrantyRecovery.view';
+import IPEEvidences  from '../views/local/import/inspectionPointAndEmptiness/ipeEvidences.view';
 import IPEDocuments from '../views/local/import/inspectionPointAndEmptiness/ipeDocuments.view';
 import IPEMonitoring from '../views/local/import/inspectionPointAndEmptiness/ipeMonitoring.view';
 
@@ -60,6 +61,7 @@ export default class Local extends Component{
                             <li><LinkSubItem><Link to="/ls/import/inspection-point-and-emptiness/documents">Documentos</Link></LinkSubItem></li>
                             <li><LinkSubItem><Link to="/ls/import/inspection-point-and-emptiness/monitoring">Monitoreo</Link></LinkSubItem></li>
                             <li><LinkSubItem><Link to="/ls/import/inspection-point-and-emptiness/warranty-recovery">Recuperacion de garantias</Link></LinkSubItem></li>
+                            <li><LinkSubItem><Link to="/ls/import/inspection-point-and-emptiness/evidences">Evidencias</Link></LinkSubItem></li>
                           </ul>
                         </li>
                       </ul>
@@ -77,6 +79,7 @@ export default class Local extends Component{
                   <Route exact path="/ls/import/inspection-point-and-emptiness/warranty-recovery" render={(props) => <WarrantyRecovery {...props}/>}/>
                   <Route exact path="/ls/import/inspection-point-and-emptiness/documents" render={(props) => <IPEDocuments {...props}/>}/>
                   <Route exact path="/ls/import/inspection-point-and-emptiness/monitoring" render={(props) => <IPEMonitoring {...props}/>}/>
+                  <Route exact path="/ls/import/inspection-point-and-emptiness/evidences" render={(props) => <IPEEvidences {...props}/>}/>
               </Switch>
             </div>
           </Router>

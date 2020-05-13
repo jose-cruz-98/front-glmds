@@ -157,7 +157,7 @@ const UserInfo = (props) => {
         <div className="sidebar-user-info">
             <div className="user-info">
                 <div className="col-xs-2 col-sm-3 profile-photo">
-                    <img src={dataUser.tImage} alt="Foto de perfil"></img>
+                    <img src="/img/logo.png" alt="Logo"></img>
                 </div>
                 <div className="col-xs-10 col-sm-9">
                     <div>{dataUser.tName}</div>

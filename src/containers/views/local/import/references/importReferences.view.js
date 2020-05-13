@@ -19,6 +19,8 @@ import Modal from '../../../../components/modal';
 import DocumentsForm from '../../../../forms/documents.form';
 import EtaForm from '../../../../forms/eta.form';
 
+import moment from 'moment'
+
 import {copyReferenceInLocalStorage} from '../../../../../utils/helpers';
 
 class ImportReferences extends Component{
@@ -78,7 +80,7 @@ class ImportReferences extends Component{
             cell: rows => {
                 return <div>
                     {rows.tEta.map((eta, i) => {
-                         return <div key={i}>{`${i+1}. ${eta}`}</div>
+                         return <div key={i}>{`${i+1}. ${moment(Date(eta)).format('DD/MM/YYYY')}`}</div>
                         })
                     }
                 </div>},
@@ -283,7 +285,7 @@ class ImportReferences extends Component{
                     <div className="col-md-4 col-xs-12"><strong>eTA: </strong>
                         <ol>
                             {data.tEta.map(eta => {
-                                return <li key={eta}>{eta}</li>
+                                return <li key={eta}>{moment(Date(eta)).format('DD/MM/YYYY')}</li>
                             })}
                         </ol>
                     </div>

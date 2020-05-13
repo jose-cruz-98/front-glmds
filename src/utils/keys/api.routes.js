@@ -15,7 +15,8 @@ export const api = {
         ADD_NOTE_DOCUMENT : `${HOST}/documents/note`,
         ADD_EVENT : `${HOST}/events/event`,
         ADD_CARRIER : `${HOST}/carriers/carrier`,
-        ADD_IMAGEN_MONITORING : `${HOST}/carriers/imagen-monitoring`
+        ADD_IMAGEN_MONITORING : `${HOST}/carriers/imagen-monitoring`,
+        ADD_EVIDENCES : `${HOST}/evidences/evidence`
     },
     GET : {
         GET_PATENTS : `${HOST}/patents/patent`,
@@ -27,6 +28,7 @@ export const api = {
         GET_PAYMENTS : `${HOST}/payments/payment`,
         GET_EVENTS : `${HOST}/events/event`,
         GET_CARRIER : `${HOST}/carriers/carrier`,
+        GET_EVIDENCES : `${HOST}/evidences/evidence`
         // GET_FILE : `${HOST}/documents`
     },
     PUT : {
