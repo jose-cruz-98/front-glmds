@@ -105,7 +105,6 @@ export default class CarrierForm extends Component{
                         placeholder="Ej. 314 355 4578"
                         label="Contacto"
                         value={formData.tContact}
-                        required
                         onChange={this.getValueOfInput.bind(this)}
                     />
                     <Input 

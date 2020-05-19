@@ -1,5 +1,5 @@
 var expTextAndNumbers = /^[0-9A-Za-z .]+$/;
-var expNumbers = /^[0-9 .]+$/;
+// var expNumbers = /^[0-9 .]+$/;
 
 const rules = {
     tAmount : [
@@ -11,7 +11,7 @@ const rules = {
             msg : `La cantidad es demaciado grande.`
         },
         {
-            isValid : expNumbers,
+            isValid : expTextAndNumbers,
             msg : "El formato de monto es invalida"
         }
     ],
