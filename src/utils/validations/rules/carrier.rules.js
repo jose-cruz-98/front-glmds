@@ -41,19 +41,6 @@ const rules = {
             msg : "La operador es invalido."
         }
     ],
-    tContact : [
-        {
-            minLenght : 1,
-            msg : "El contacto debe de tener mas de 1 caracteres."
-        },{
-            maxLenght : 15,
-            msg : `El contacto no debe de tener mas de 15 caracteres.`
-        },
-        {
-            isValid : expNum,
-            msg : "El contacto es invalido."
-        }
-    ],
     tCaat : [
         {
             minLenght : 1,
