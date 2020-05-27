@@ -1,5 +1,5 @@
 var expEmail = RegExp(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(.\w{2,4})+$/);
-var expPassword = RegExp(/^(?=.*\d)(?=.*[!+<>-@])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/);
+var expPassword = RegExp(/^(?=.*\d)(?=.*[!+<>-@.])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/);
 
 const rules = {
     tEmail : [

@@ -1,5 +1,4 @@
 var expTextAndNumbers = /^[0-9A-Za-z ]+$/;
-var expNum = /^[0-9 ]+$/;
 
 const rules = {
     tCarrier : [

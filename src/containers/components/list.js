@@ -394,3 +394,58 @@ export const RequestListReturned = ({datas, role, updRequest, setActionToModal})
         
     )
 }
+
+export const FolderList = ({data, setActionToModal, showModal}) => {
+    return(
+        <React.Fragment>
+            <ul className="folder-list mt-2">
+                {
+                    data.map(d => {
+                        return(
+                            <li key={d._id} className="mb-1">
+                                <div className="row">
+                                    <i className="fa fa-folder mr-1"></i>
+                                    <p>{d.tCategory}</p>
+                                    <i className="fa fa-plus ml-1 text-success" title="nuevo archivo" onClick={()=>{
+                                        setActionToModal("NUEVO-ARCHIVO", d._id)
+                                        showModal();
+                                    }}></i>
+                                </div>
+                                {
+                                    d.aDocuments.length !== 0 ? 
+                                        <ul>
+                                            {
+                                                d.aDocuments.map(document => {
+                                                    let namefile = document.tUri.split("/");
+                                                    return(
+                                                        <li key={document._id}>
+                                                            <div className="row middle-xs">
+                                                                <div className="fas fa-file mr-2"></div>
+                                                                <div>
+                                                                    <div>
+                                                                        <b>Nombre: </b>
+                                                                        <a href={`${api.API}/documents/attached/${namefile[3]}/${namefile[4]}/${namefile[5]}`} 
+                                                                            target="_blank" 
+                                                                            className="a-file-link ml-1" 
+                                                                            rel="noopener noreferrer">
+                                                                            {document.tName}
+                                                                        </a>
+                                                                    </div>
+                                                                    {document.tNote !== "" ? <div><b>Nota:</b> {document.tNote}</div> : ""}
+                                                                </div>
+                                                            </div> 
+                                                        </li>
+                                                    )
+                                                })
+                                            }
+                                        </ul>
+                                    : ""
+                                }
+                            </li>
+                        )
+                    })
+                }
+            </ul>
+        </React.Fragment>
+    );
+}

@@ -1,17 +1,18 @@
 import React, {Component} from 'react';
 
 import {Row} from '../components/layout';
-import {Input, InputFile} from '../components/input';
+import {Input, InputFile, TextArea} from '../components/input';
 
 import {validateForm} from '../../utils/validations/validate';
 import rules from '../../utils/validations/rules/documet.rules';
 
-export default class DocumentsForm extends Component{
+export default class PersonalFilesForm extends Component{
 
     state = {
         formData : {
             tName : "",
-            tFile : ""
+            tFile : "",
+            tNote : ""
         }
     }
 
@@ -29,10 +30,7 @@ export default class DocumentsForm extends Component{
     getData = () => {
         if(validateForm(this.state.formData, rules)){
             let formData = new FormData(document.querySelector("#formAddDocument"));
-            formData.append("_tReference", this.props.tReference);
-            formData.append("tOperation", "IMPORTACION");
-            formData.append("tTypeDocument", "DOCUMENTOS");
-            formData.append("tStatus", "COMPLETADO");
+            formData.append("_tCategory", this.props._tCategory);
 
             return formData;
         }
@@ -64,6 +62,18 @@ export default class DocumentsForm extends Component{
                     required
                     onChange={this.getValueOfInput.bind(this)}
                 />
+                </Row>
+                <Row className="col-xs-12 mb-1">
+                    <TextArea 
+                        type="text"
+                        id="tNote"
+                        className="col-xs-12"
+                        placeholder="Ej.  No se termino la ..."
+                        label="Nota"
+                        value={formData.tNote}
+                        rows="2"
+                        onChange={this.getValueOfInput.bind(this)}
+                    />
                 </Row>
             </form>
         );

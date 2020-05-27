@@ -89,9 +89,6 @@ const Navbar = (props) => {
                                 notifications={props.notifications}
                             />
                         </li>
-                        <li>
-                            <i className="fa fa-envelope"></i>
-                        </li>
                     </ul>
                 </div>
             </div>

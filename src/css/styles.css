@@ -796,6 +796,21 @@ textarea {
     background: var(--body-back);
     display: none;
 }
+
+/* folder list */
+.folder-list,
+.folder-list li ul{
+    list-style: none;
+}
+
+.folder-list li{
+    cursor: pointer;
+}
+
+.folder-list li ul li{
+    border-bottom: solid 1px #7e7d7d;
+    padding: 0.5em;
+}
 /* COLORS */
 .success-light{
     background: var(--success-light);

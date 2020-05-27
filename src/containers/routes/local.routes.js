@@ -7,6 +7,8 @@ import {
   Link
 } from "react-router-dom";
 
+import {connect} from 'react-redux';
+
 import {setHeadersAXIOS} from '../../utils/helpers';
 import {api} from '../../utils/keys/api.routes'
 
@@ -23,10 +25,11 @@ import WarrantyRecovery from '../views/local/import/inspectionPointAndEmptiness/
 import IPEEvidences  from '../views/local/import/inspectionPointAndEmptiness/ipeEvidences.view';
 import IPEDocuments from '../views/local/import/inspectionPointAndEmptiness/ipeDocuments.view';
 import IPEMonitoring from '../views/local/import/inspectionPointAndEmptiness/ipeMonitoring.view';
+import Personal from '../views/local/personal/personal.view';
 
 setHeadersAXIOS();
 
-export default class Local extends Component{
+class Local extends Component{
   state = {
     notifications : []
   }
@@ -43,6 +46,8 @@ export default class Local extends Component{
 
   render(){
     const {notifications} = this.state;
+    const {dataUser} = this.props;
+
       return(
           <Router>
             <Sidebar
@@ -66,6 +71,15 @@ export default class Local extends Component{
                         </li>
                       </ul>
                     </li>
+                    {
+                      dataUser.tRole.join().includes("PERSONAL") ? 
+                      <li>
+                        <ul> 
+                          <LinkItem icon="fa fa-user"><Link to="/ls/personal">Personal</Link></LinkItem>
+                        </ul>
+                      </li> 
+                      : ""
+                    }
                   </ul>
                 </Body>
             </Sidebar>
@@ -80,9 +94,19 @@ export default class Local extends Component{
                   <Route exact path="/ls/import/inspection-point-and-emptiness/documents" render={(props) => <IPEDocuments {...props}/>}/>
                   <Route exact path="/ls/import/inspection-point-and-emptiness/monitoring" render={(props) => <IPEMonitoring {...props}/>}/>
                   <Route exact path="/ls/import/inspection-point-and-emptiness/evidences" render={(props) => <IPEEvidences {...props}/>}/>
+                  <Route exact path="/ls/personal" render={(props) => <Personal {...props}/>}/>
               </Switch>
             </div>
           </Router>
       );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    dataUser : state.SessionReducer.dataUser
+  }
+}
+
+export default connect(mapStateToProps, {
+})(Local);

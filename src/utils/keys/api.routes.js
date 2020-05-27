@@ -16,7 +16,9 @@ export const api = {
         ADD_EVENT : `${HOST}/events/event`,
         ADD_CARRIER : `${HOST}/carriers/carrier`,
         ADD_IMAGEN_MONITORING : `${HOST}/carriers/imagen-monitoring`,
-        ADD_EVIDENCES : `${HOST}/evidences/evidence`
+        ADD_EVIDENCES : `${HOST}/evidences/evidence`,
+        ADD_CATEGORY : `${HOST}/categories/category`,
+        ADD_FILE_TO_CATEGORY : `${HOST}/categories/file-to-category`
     },
     GET : {
         GET_PATENTS : `${HOST}/patents/patent`,
@@ -28,7 +30,8 @@ export const api = {
         GET_PAYMENTS : `${HOST}/payments/payment`,
         GET_EVENTS : `${HOST}/events/event`,
         GET_CARRIER : `${HOST}/carriers/carrier`,
-        GET_EVIDENCES : `${HOST}/evidences/evidence`
+        GET_EVIDENCES : `${HOST}/evidences/evidence`,
+        GET_CATEGORY : `${HOST}/categories/category`
         // GET_FILE : `${HOST}/documents`
     },
     PUT : {
@@ -36,7 +39,7 @@ export const api = {
         UPD_ETA : `${HOST}/references/eta`,
         UPD_IMPORT_REFERENCE_STATE : `${HOST}/references/reference-import-state`,
         UPD_RETURNED_DOCUMENT_REQUEST : `${HOST}/payments/returned-document`,
-        UPD_REQUEST_AND_DELETE : `${HOST}/payments/complete-and-delete`
+        UPD_REQUEST_AND_DELETE : `${HOST}/payments/complete-and-delete`,
     },
     DELETE : {
         DEL_DOCUMENT : `${HOST}/documents/document`,
