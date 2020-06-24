@@ -44,6 +44,7 @@ export const api = {
     DELETE : {
         DEL_DOCUMENT : `${HOST}/documents/document`,
         DEL_REQUEST : `${HOST}/payments/request`,
-        DEL_PAYMENT : `${HOST}/payments/payment`
+        DEL_PAYMENT : `${HOST}/payments/payment`,
+        DEL_NOTIFICATIONS : `${HOST}/notifications/notification`
     }
 }

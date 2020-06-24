@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 import {useSelector} from 'react-redux';
 import {Link} from 'react-router-dom'
 import {api} from '../../utils/keys/api.routes';
+import {copyReferenceInLocalStorage} from '../../utils/helpers'
+import {ActionButton} from '../components/button'
+import Axios from 'axios'
 
 export function Sidebar(props){
     const [isShow, setIsShow] = useState(false);
@@ -100,19 +103,31 @@ const Notification = ({show,handleOnClick,notifications}) => {
     let role = useSelector(state => state.SessionReducer.dataUser.tRole)
     let idUser = useSelector(state => state.SessionReducer.dataUser._id)
 
+    let myNotifications = notifications.filter((notification)=> notification._tUserTo === idUser)
+
+    let delNotification = async (id) => {
+        try{
+            await Axios.delete(api.DELETE.DEL_NOTIFICATIONS+`?_id=${id}`)
+        }catch(err){
+            console.log(err)
+        }
+    }
+
     return(
         <React.Fragment>
             <div className={`container-notifications ${show ? "" : "hide-container-notifications"}`}>
                 {
-                    notifications.map(notification => {
-                        if(notification._tUser !== idUser){
+                    myNotifications.map(notification => {
+                        // if(notification._tUser !== idUser){
                             if(notification.tRole[0] === "PRIVADO"){
                                 if(role.join().includes(notification.tRole[0])){
                                     numOfNotification++
                                     return(
                                         <div className="notification-item" key={notification._id}>
                                             <small className="fz-0-6">{notification.dRegistered}</small>
-                                            <div className="start-xs"><Link to={`${notification.tGoTo}`}>{notification.tMessage}</Link></div>
+                                            <div className="start-xs"><Link to={`${notification.tGoTo}`} onClick={
+                                            () => copyReferenceInLocalStorage(notification._tReference, notification.tReference)
+                                        }>{notification.tMessage}</Link></div>
                                         </div>
                                     )
                                 }else return null
@@ -121,11 +136,25 @@ const Notification = ({show,handleOnClick,notifications}) => {
                                 return(
                                     <div className="notification-item" key={notification._id}>
                                         <small className="fz-0-6">{notification.dRegistered}</small>
-                                        <div className="start-xs"><Link to={`${notification.tGoTo}`}>{notification.tMessage}</Link></div>
+                                        <div className="row middle-xs">
+                                            <div className="start-xs col-xs-10"><Link to={`${notification.tGoTo}`}  onClick={
+                                                () => copyReferenceInLocalStorage(notification._tReference, notification.tReference)
+                                            }>{notification.tMessage}</Link></div>
+                                            <div className="col-xs-2 center-xs">
+                                            <ActionButton 
+                                                icon="fa fa-trash"
+                                                tooltip="Informacion Extra"
+                                                className="danger"
+                                                onClick={()=>{
+                                                    delNotification(notification._id);
+                                                }}
+                                            />
+                                            </div>
+                                        </div>    
                                     </div>
                                 )
                             }
-                        }else return null;
+                        // }else return null;
                     })
                 }
             </div>

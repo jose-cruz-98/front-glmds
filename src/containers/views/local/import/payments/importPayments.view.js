@@ -47,7 +47,7 @@ class ImportPayments extends Component{
 
     BodyUserRole = () => {
         let role = this.props.tRole.join();
-        console.log(role)
+
         if(role.includes("OPERACIONES") || role.includes("ADMINISTRADOR GENERAL")){
             return <RoleOperation toggleGeneralLoader={this.toggleGeneralLoader}/>
         }else if(role.includes("FACTURACION")){

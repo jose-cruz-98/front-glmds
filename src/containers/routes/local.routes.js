@@ -36,7 +36,7 @@ class Local extends Component{
   async componentDidMount(){
     const socket = socketIOClient(api.ENDPOINT);
     
-    socket.on("getNotifications", res => {
+    socket.on("getNotifications", res => { 
       this.setState({
         ...this.state,
         notifications : res
